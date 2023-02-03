@@ -1,32 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import { Switch, Route, Link } from 'react-router-dom'
+import { App2 } from '../lib/test-app2/dist/app-packages';
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+const Why = () => {
+  return (
+    <div>why</div>
+  )
+}
 
+function App() {
   return (
     <div className="App">
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <Link to="/">base</Link>
+      <Link to="/dex">dex</Link>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Switch>
+        <Route path="/" component={Why} exact></Route>
+        <Route path="/dex" component={App2}></Route>
+      </Switch>
     </div>
   )
 }
